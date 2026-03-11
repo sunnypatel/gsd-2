@@ -118,49 +118,57 @@ The wizard is the on-ramp. Auto mode is the highway.
 
 ## Getting Started
 
-### Install
+### Install and run
 
 ```bash
 npm install -g gsd-pi
-```
-
-Requires Node.js ≥ 20.6.0. Installs Chromium via Playwright for browser-based verification (non-fatal if it fails).
-
-### First Run
-
-```bash
 cd your-project
 gsd
 ```
 
-On first launch, GSD prompts for optional API keys:
-- **Brave Search** — for web research during planning
-- **Context7** — for up-to-date library documentation
-- **Jina** — for web page content extraction
-
-All optional. Press Enter to skip any. Keys are stored in `~/.gsd/agent/auth.json` and loaded automatically on subsequent launches.
-
-### Start Building
-
-The wizard walks you through describing what you want to build. Once you approve the roadmap:
+That's it. GSD walks you through describing what you want to build, creates a roadmap, and starts working. When you're ready to let it run autonomously:
 
 ```
 /gsd auto
 ```
 
-Walk away. GSD will research, plan, execute, verify, commit, and advance through every slice until the milestone is complete.
+Walk away. Come back to a built project with clean git history.
+
+### The two-terminal workflow
+
+GSD is designed for you to keep working while it builds. Open two terminals in the same project:
+
+**Terminal 1 — auto mode (let it run)**
+```bash
+gsd
+/gsd auto
+```
+
+**Terminal 2 — steer while it works**
+```bash
+gsd
+/gsd discuss    # talk through architecture decisions
+/gsd status     # check progress
+/gsd queue      # queue the next milestone
+```
+
+Auto mode reads state from `.gsd/` files on disk. Your discussions and decisions in terminal 2 are picked up automatically at the next phase boundary. You don't need to stop auto mode to influence what it does next.
+
+### First launch
+
+On first run, GSD prompts for optional API keys (Brave Search, Context7, Jina) for web research and documentation tools. All optional — press Enter to skip. Keys are stored in `~/.gsd/agent/auth.json`.
 
 ### Commands
 
 | Command | What it does |
 |---------|-------------|
 | `/gsd` | Contextual wizard — reads state, shows what's next |
-| `/gsd auto` | Start auto mode (fresh session per unit, loops until done) |
+| `/gsd auto` | Autonomous mode — researches, plans, executes, commits, repeats |
 | `/gsd stop` | Stop auto mode gracefully |
-| `/gsd status` | Progress dashboard overlay |
+| `/gsd discuss` | Discuss architecture and decisions (works alongside auto mode) |
+| `/gsd status` | Progress dashboard |
 | `/gsd queue` | Queue future milestones (safe during auto mode) |
-| `/gsd discuss` | Discuss implementation decisions before planning |
-| `/gsd prefs` | Manage skill preferences (global/project) |
+| `/gsd prefs` | Model selection, timeouts, budget ceiling |
 | `/gsd doctor` | Validate `.gsd/` integrity, find and fix issues |
 | `Ctrl+Alt+G` | Toggle dashboard overlay |
 
