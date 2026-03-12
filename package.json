@@ -18,6 +18,7 @@
   },
   "files": [
     "dist",
+    "docs/providers.md",
     "patches",
     "pkg",
     "src/resources",

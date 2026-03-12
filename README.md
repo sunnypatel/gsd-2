@@ -414,6 +414,10 @@ If you have a **Claude Max**, **Codex**, or **GitHub Copilot** subscription, you
 
 [OpenRouter](https://openrouter.ai) gives you access to hundreds of models through a single API key. Use it to run GSD with Llama, DeepSeek, Qwen, or anything else OpenRouter supports.
 
+### Custom & Local Providers
+
+Run any OpenAI-compatible endpoint — Ollama, LM Studio, vLLM, or your own. Run `gsd config` → pick "Custom/Local provider" → pick a preset → restart. For manual setup, advanced options, and complete examples, see **[docs/providers.md](docs/providers.md)**.
+
 ### Per-Phase Model Selection
 
 In your preferences (`/gsd prefs`), assign different models to different phases:
